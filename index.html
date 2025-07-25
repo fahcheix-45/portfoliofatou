@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfolio – Fatou SEYE</title>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    rel="stylesheet"
+  />
+  <style>
+    /* Reset & base */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f0f4f8;
+      color: #222;
+      scroll-behavior: smooth;
+    }
+
+    /* Navbar */
+    nav.navbar {
+      background: #0077b6;
+      transition: background-color 0.3s ease;
+    }
+    nav.navbar.scrolled {
+      background-color: #023e8a !important;
+      box-shadow: 0 2px 8px rgb(0 0 0 / 0.3);
+    }
+    nav .navbar-brand {
+      font-weight: 700;
+      font-size: 1.6rem;
+      letter-spacing: 1.2px;
+      color: white !important;
+    }
+    nav .nav-link {
+      color: white !important;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+    nav .nav-link:hover {
+      color: #90e0ef !important;
+    }
+
+    /* Hero section with fade in animation */
+    .hero {
+      background: linear-gradient(135deg, #0096c7, #48cae4);
+      color: white;
+      height: 90vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 1rem;
+      overflow: hidden;
+      position: relative;
+    }
+    .hero h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      animation: fadeSlideIn 1.5s ease forwards;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    .hero p {
+      font-size: 1.4rem;
+      margin-bottom: 2rem;
+      font-weight: 500;
+      animation: fadeSlideIn 2s ease forwards;
+      opacity: 0;
+      transform: translateY(20px);
+      animation-delay: 0.4s;
+    }
+    .btn-custom {
+      background-color: white;
+      color: #0077b6;
+      font-weight: 700;
+      padding: 0.75rem 2.5rem;
+      border-radius: 50px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0, 118, 190, 0.3);
+      animation: fadeSlideIn 2.5s ease forwards;
+      opacity: 0;
+      transform: translateY(20px);
+      animation-delay: 0.8s;
+      border: none;
+    }
+    .btn-custom:hover {
+      background-color: #0077b6;
+      color: white;
+      box-shadow: 0 7px 20px rgba(0, 118, 190, 0.6);
+    }
+
+    @keyframes fadeSlideIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Section Titles */
+    .section-title {
+      font-weight: 700;
+      color: #0077b6;
+      margin-bottom: 2rem;
+      font-size: 2rem;
+      text-align: center;
+      position: relative;
+    }
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: #0077b6;
+      margin: 0.5rem auto 0 auto;
+      border-radius: 2px;
+    }
+
+    /* Sections */
+    section {
+      padding: 4rem 0;
+    }
+    section.bg-light {
+      background: #e9f1f7;
+    }
+
+    /* Competences list */
+    #competences ul {
+      list-style: none;
+      padding: 0;
+    }
+    #competences li {
+      background: white;
+      padding: 1rem 1.5rem;
+      margin-bottom: 1rem;
+      border-radius: 15px;
+      box-shadow: 0 3px 10px rgb(0 0 0 / 0.1);
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+      cursor: default;
+    }
+    #competences li:hover {
+      background-color: #90e0ef;
+      color: #023e8a;
+    }
+
+    /* Projets cards */
+    .project-card {
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgb(0 0 0 / 0.08);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      cursor: pointer;
+      background: white;
+    }
+    .project-card:hover {
+      transform: translateY(-10px) scale(1.05);
+      box-shadow: 0 15px 40px rgb(0 0 0 / 0.2);
+    }
+    .project-card h5 {
+      font-weight: 700;
+      color: #0077b6;
+      margin-bottom: 0.8rem;
+    }
+    .project-card p {
+      color: #555;
+      font-weight: 500;
+    }
+
+    /* Formation list styling */
+    #formation ul {
+      max-width: 600px;
+      margin: auto;
+      padding-left: 1rem;
+    }
+    #formation li {
+      background: white;
+      margin-bottom: 1rem;
+      padding: 1rem 1.5rem;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgb(0 0 0 / 0.07);
+      font-weight: 600;
+    }
+
+    /* Contact section */
+    #contact p {
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+    #contact .btn-primary {
+      border-radius: 50px;
+      padding: 0.75rem 2.5rem;
+      font-weight: 700;
+      box-shadow: 0 5px 15px rgba(0, 118, 190, 0.4);
+      transition: background-color 0.3s ease;
+    }
+    #contact .btn-primary:hover {
+      background-color: #023e8a;
+    }
+
+    /* Social icons */
+    #contact .social-icons {
+      margin-top: 1.5rem;
+      text-align: center;
+    }
+    #contact .social-icons a {
+      margin: 0 0.8rem;
+      color: #0077b6;
+      font-size: 2rem;
+      transition: color 0.3s ease;
+    }
+    #contact .social-icons a:hover {
+      color: #023e8a;
+    }
+
+    /* Footer */
+    footer {
+      background: #0077b6;
+      color: white;
+      padding: 1.5rem 0;
+      text-align: center;
+      font-weight: 600;
+      letter-spacing: 1px;
+      font-size: 1rem;
+      position: relative;
+      bottom: 0;
+      width: 100%;
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      .hero p {
+        font-size: 1.1rem;
+      }
+      #competences li,
+      #formation li {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">Fatou SEYE</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#apropos">À propos</a></li>
+          <li class="nav-item"><a class="nav-link" href="#competences">Compétences</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projets">Projets</a></li>
+          <li class="nav-item"><a class="nav-link" href="#formation">Formation</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <h1>Bonjour, je suis Fatou SEYE</h1>
+      <p>Développeuse web & mobile – Passionnée par la tech et le digital</p>
+      <a href="Mon CV.pdf" class="btn btn-custom">Télécharger mon CV</a>
+    </div>
+  </section>
+
+  <!-- À propos -->
+  <section id="apropos" class="py-5">
+    <div class="container">
+      <h2 class="section-title">À propos de moi</h2>
+      <p class="lead text-center mx-auto" style="max-width: 700px;">
+        Diplômée en informatique appliquée à la gestion, je conçois des solutions digitales modernes combinant développement, gestion de contenu et design graphique. J'aime transformer les idées en projets concrets avec rigueur et créativité.
+      </p>
+    </div>
+  </section>
+
+  <!-- Compétences -->
+  <section id="competences" class="py-5 bg-light">
+    <div class="container">
+      <h2 class="section-title">Compétences</h2>
+      <div class="row justify-content-center">
+        <div class="col-md-5">
+          <ul>
+            <li><strong>Langages :</strong> HTML, CSS, JavaScript, PHP, Java</li>
+            <li><strong>Outils :</strong> VS Code, Word, Excel, PowerPoint</li>
+            <li><strong>Design :</strong> Canva, Photoshop, Illustrator</li>
+          </ul>
+        </div>
+        <div class="col-md-5">
+          <ul>
+            <li><strong>Fonctionnel :</strong> Comptabilité analytique, Marketing digital</li>
+            <li><strong>Langues :</strong> Français (courant), Anglais (bon niveau)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projets -->
+  <!-- Projets -->
+<section id="projets" class="py-5">
+  <div class="container">
+    <h2 class="section-title">Projets réalisés</h2>
+    <div class="row g-4 justify-content-center">
+      <div class="col-md-4">
+        <div class="project-card p-4">
+          <h5>Site vitrine boutique</h5>
+          <p>HTML, CSS, JavaScript – Design responsive</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="project-card p-4">
+          <h5>
+            <a href="https://senagroliv.byethost13.com" target="_blank" style="text-decoration:none; color:#0077b6;">
+              SENAGROLIV - Application de gestion et livraison des produits agricoles
+              <i class="fa fa-external-link-alt" style="font-size:0.8rem; margin-left:5px;"></i>
+            </a>
+          </h5>
+          <p>Plateforme web pour commandes et livraisons de produits agricoles – PHP, JavaScript, MySQL</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="project-card p-4">
+          <h5>Création de visuels</h5>
+          <p>Affiches pour événements (Photoshop, Canva)</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Formation -->
+  <section id="formation" class="py-5 bg-light">
+    <div class="container">
+      <h2 class="section-title">Formation</h2>
+      <ul>
+        <li><strong>2023–2025 :</strong> Licence en Informatique Appliquée à la Gestion – ISM Mbour</li>
+        <li><strong>2022 :</strong> Baccalauréat Scientifique (S2) – Nouveau Lycée de Louga</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="py-5">
+    <div class="container text-center">
+      <h2 class="section-title">Contact</h2>
+      <p><strong>Email :</strong> seyefatou038@gmail.com</p>
+      <p><strong>Téléphone :</strong> 78 485 08 05</p>
+      <p><strong>Ville :</strong> Mbour</p>
+      <a href="mailto:seyefatou038@gmail.com" class="btn btn-primary mt-3">
+        <i class="fa fa-envelope"></i> M'envoyer un message
+      </a>
+
+      <div class="social-icons mt-4">
+        <a
+          href="https://www.linkedin.com/in/fatou-seye-5115712a1"
+          target="_blank"
+          aria-label="LinkedIn"
+          ><i class="fab fa-linkedin"></i
+        ></a>
+        <a
+          href="https://github.com/fahcheix-45"
+          target="_blank"
+          aria-label="GitHub"
+          ><i class="fab fa-github"></i
+        ></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>© 2025 Fatou SEYE – Portfolio personnel</p>
+    </div>
+  </footer>
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+  ></script>
+  <script>
+    // Navbar background change on scroll
+    window.addEventListener('scroll', () => {
+      const navbar = document.querySelector('nav.navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+  </script>
+</body>
+</html>
